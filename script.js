@@ -6,6 +6,7 @@
 // @grant       none
 // ==/UserScript==
 function doc_keyUp(e) {
+    if(e.ctrlKey) return;
     var query = window.location.href;
     query = query.substring(query.indexOf(".com/")+4).replace(/\//g,'');
     switch(e.code){
@@ -32,7 +33,7 @@ function doc_keyUp(e) {
             window.location.href = "https://xkcd.com";
             break;
         default:
-            console.log(query);
+            break;
     }
 }
 document.addEventListener('keyup', doc_keyUp, false);
