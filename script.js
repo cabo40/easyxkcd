@@ -26,14 +26,14 @@ function doc_keyUp(e) {
         case "KeyR":
             window.location.href = "https://c.xkcd.com/random/comic/";
             break;
-        case "KeyT":
-            window.location.href = "https://xkcd.com";
-            break;
         case "KeyS":
             if(subscriptSet) break;
             subscriptSet = 1;
             var subscript = $("#comic")["0"].firstElementChild.title;
             $("#comic").append("<br/>" + subscript);
+            break;
+        case "KeyT":
+            window.location.href = "https://xkcd.com";
             break;
         default:
             break;
