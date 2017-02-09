@@ -29,7 +29,7 @@ function doc_keyUp(e) {
         case "KeyS":
             if(subscriptSet) break;
             subscriptSet = 1;
-            var subscript = $("#comic")["0"].firstElementChild.title;
+            var subscript = $("img")[1].title;
             $("#comic").append("<br/>" + subscript);
             break;
         case "KeyT":
