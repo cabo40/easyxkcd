@@ -30,7 +30,12 @@ function doc_keyUp(e) {
             if(subscriptSet) break;
             subscriptSet = 1;
             var subscript = $("img")[1].title;
-            $("#comic").append("<br/>" + subscript);
+            var cssfortext=`
+            <style>@font-face {
+                font-family: 'xkcd-Regular';
+                src: url('/fonts/xkcd-Regular.eot?') format('eot'), url('/fonts/xkcd-Regular.otf') format('opentype');
+            }</style>`;
+            $("#comic").append("<br/><p style=\"font-family:xkcd-Regular;\">" + subscript + "</p>");
             break;
         case "KeyT":
             window.location.href = "https://xkcd.com";
