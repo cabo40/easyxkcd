@@ -1,8 +1,7 @@
-#Installation
+##Installation
 Use your favorite script manager (eg. [greasemonkey](http://www.greasespot.net/), [tampermonkey](https://tampermonkey.net/)) and add the script on https://goo.gl/QLauUL.
 
-#Usage
-
+##Usage
 Visualization:
 
 - Press C to center text
