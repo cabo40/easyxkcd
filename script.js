@@ -2,7 +2,7 @@
 // @name        xkcd
 // @namespace   *xkcd.com/*
 // @include     *xkcd.com/*
-// @version     1
+// @version     1.01
 // @grant       none
 // ==/UserScript==
 var subscriptSet=0;
