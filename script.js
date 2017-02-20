@@ -4,6 +4,7 @@
 // @include     *xkcd.com/*
 // @version     1.01
 // @grant       none
+// @updateURL   https://raw.githubusercontent.com/SkorohodAlex/easyxkcd/master/script.js
 // ==/UserScript==
 var subscriptSet=0;
 var maxXKCD=1801;
