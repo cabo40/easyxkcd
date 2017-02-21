@@ -2,13 +2,15 @@
 // @name        xkcd
 // @namespace   *xkcd.com/*
 // @include     *xkcd.com/*
-// @version     1.01
+// @version     1.02
 // @grant       none
+// @require     https://code.jquery.com/jquery-3.1.1.min.js
+// @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
 // @updateURL   https://raw.githubusercontent.com/SkorohodAlex/easyxkcd/master/script.js
 // ==/UserScript==
 var subscriptSet=0;
 var maxXKCD=1801;
-$.getScript( "https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js" );
+
 function doc_keyUp(e) {
     if(e.ctrlKey) return;
     var query = window.location.href;
@@ -30,15 +32,26 @@ function doc_keyUp(e) {
             $.smoothScroll({ speed: 700 }, offset);
             break;
         case "KeyF":
-            window.location.href = "https://xkcd.com/"+query;
+            if(Math.floor(query)!=query){
+                window.location.href = "https://xkcd.com/";
+            }
+            else{
+                window.location.href = "https://xkcd.com/"+query;
+            }
             break;
         case "KeyG":
             var name="a";
             var err=false;
             while(Math.floor(name)!=name || name<1 || name>maxXKCD){
+                if(name===null){
+                    break;
+                }
                 if(err) window.alert("Input must be a positive number lower than "+maxXKCD);
                 err=true;
                 name=prompt("Enter xkcd number","1786");
+            }
+            if(name===null){
+                break;
             }
             window.location.href = "https://xkcd.com/"+name;
             break;
