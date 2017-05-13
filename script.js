@@ -2,7 +2,7 @@
 // @name        xkcd
 // @namespace   www.xkcd.com/
 // @include     /^https?:\/\/(www\.)?(explain)?xkcd\.com.*$/
-// @version     1.03
+// @version     1.04
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
@@ -32,7 +32,9 @@ function doc_keyUp(e) {
             $.smoothScroll({ speed: 700 }, offset);
             break;
         case "KeyF":
-            window.location.href=$("a.external.text")[0].href.replace(/^http:/i,"https:");
+            if($(".mw-redirect").length){
+                window.location.href=$("a.external.text")[0].href.replace(/^http:/i,"https:");
+            }
             break;
         case "KeyG":
             var name="a";
@@ -51,24 +53,27 @@ function doc_keyUp(e) {
             window.location.href = "https://xkcd.com/"+name;
             break;
         case "KeyH":
-            window.location.href = "https://explainxkcd.com/"+query;
+            if($("ul.comicNav").length)
+            {
+                window.location.href = "https://explainxkcd.com/"+query;
+            }
             break;
         case "KeyN":
             if($("ul.comicNav").length)
             {
-                window.location.href = $("ul.comicNav")[0].children[3].children["0"].href;
+                window.location.href = $('a[rel="next"]')[0].href;
             }
             if($(".mw-redirect").length>2){
-                window.location.href = $(".mw-redirect")[3].href;
+                window.location.href = $(".no-link-underline .mw-redirect").filter(":contains('Next')")[0].href;
             }
             break;
         case "KeyP":
             if($("ul.comicNav").length)
             {
-                window.location.href = $("ul.comicNav")[0].children[1].children["0"].href;
+                window.location.href = $('a[rel="prev"]')[0].href;
             }
             else if($(".mw-redirect").length){
-                window.location.href = $(".mw-redirect")[1].href;
+                window.location.href = $(".no-link-underline .mw-redirect").filter(":contains('Prev')")[0].href;
             }
             break;
         case "KeyR":
@@ -84,7 +89,7 @@ src: url('/fonts/xkcd-Regular.eot?') format('eot'), url('/fonts/xkcd-Regular.otf
 }</style>`;
             $("head").prepend(cssfortext);
             var subscript = $("img")[1].title;
-            $("#comic").append("<br/><p style=\"font-family:xkcd-Regular;\">" + subscript + "</p>");
+            $("#comic").append($('<div>',{css: {'font-family':'xkcd-Regular'}}).text(subscript));
             break;
         case "KeyT":
             window.location.href = "https://xkcd.com";
