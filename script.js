@@ -50,7 +50,7 @@ function doc_keyUp(e) {
             if(name===null){
                 break;
             }
-            window.location.href = "https://xkcd.com/"+name;
+            window.location.href = "https://xkcd.com/"+Math.floor(name);
             break;
         case "KeyH":
             if($("ul.comicNav").length)
