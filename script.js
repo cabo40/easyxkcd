@@ -2,7 +2,7 @@
 // @name        xkcd
 // @namespace   www.xkcd.com/
 // @include     /^https?:\/\/(www\.)?(explain)?xkcd\.com.*$/
-// @version     1.04
+// @version     1.05
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
