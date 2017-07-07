@@ -2,7 +2,7 @@
 // @name        xkcd
 // @namespace   www.xkcd.com/
 // @include     /^https?:\/\/(www\.)?(explain)?xkcd\.com.*$/
-// @version     1.05
+// @version     1.06
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
@@ -33,7 +33,7 @@ function doc_keyUp(e) {
             break;
         case "KeyF":
             if($(".mw-redirect").length){
-                window.location.href=$("a.external.text")[0].href.replace(/^http:/i,"https:");
+                window.location.href=$("#mw-content-text .plainlinks a")[0].href.replace(/^http:/i,"https:");
             }
             break;
         case "KeyG":
