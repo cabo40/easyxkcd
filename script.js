@@ -88,7 +88,7 @@ font-family: 'xkcd-Regular';
 src: url('/fonts/xkcd-Regular.eot?') format('eot'), url('/fonts/xkcd-Regular.otf') format('opentype');
 }</style>`;
             $("head").prepend(cssfortext);
-            var subscript = $("img")[1].title;
+            var subscript = $("#comic img")[0].title;
             $("#comic").append($('<div>',{css: {'font-family':'xkcd-Regular'}}).text(subscript));
             break;
         case "KeyT":
