@@ -6,6 +6,7 @@
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.10/chance.min.js
 // @updateURL   https://raw.githubusercontent.com/SkorohodAlex/easyxkcd/master/script.js
 // ==/UserScript==
 var subscriptSet=0;
@@ -39,18 +40,28 @@ function doc_keyUp(e) {
         case "KeyG":
             var name="a";
             var err=false;
-            while(Math.floor(name)!=name || name<1 || name>maxXKCD){
-                if(name===null){
-                    break;
+            $.ajax ( {
+                type:       'GET',
+                url:        'https://xkcd.com',
+                dataType:   'html',
+                crossDomain: true,
+                success:    function (apihtml) {
+                    var resultObj = jQuery(apihtml).find('a[rel="prev"]')[0].href;
+                    maxXKCD = parseInt(resultObj.substring(resultObj.indexOf(".com/")+4).replace(/\//g,'')) + 1;
+                    while(Math.floor(name)!=name || name<1 || name>maxXKCD){
+                        if(name===null){
+                            break;
+                        }
+                        if(err) window.alert("Input must be a positive number lower than "+ parseInt(maxXKCD+1));
+                        err=true;
+                        name=prompt("Enter xkcd number","1786");
+                    }
+                    if(name===null){
+                        abort();
+                    }
+                    window.location.href = "https://xkcd.com/"+Math.floor(name);
                 }
-                if(err) window.alert("Input must be a positive number lower than "+maxXKCD);
-                err=true;
-                name=prompt("Enter xkcd number","1786");
-            }
-            if(name===null){
-                break;
-            }
-            window.location.href = "https://xkcd.com/"+Math.floor(name);
+            } );
             break;
         case "KeyH":
             if($("ul.comicNav").length)
@@ -77,7 +88,17 @@ function doc_keyUp(e) {
             }
             break;
         case "KeyR":
-            window.location.href = "https://c.xkcd.com/random/comic/";
+            $.ajax ( {
+                type:       'GET',
+                url:        'https://xkcd.com',
+                dataType:   'html',
+                success:    function (apihtml) {
+                    var resultObj = jQuery(apihtml).find('a[rel="prev"]')[0].href;
+                    maxXKCD = parseInt(resultObj.substring(resultObj.indexOf(".com/")+4).replace(/\//g,'')) + 1;
+                    var ncomic = chance.integer({min: 1, max: maxXKCD});
+                    window.location.href = "https://www.xkcd.com/" + ncomic;
+                }
+            } );
             break;
         case "KeyS":
             if(subscriptSet) break;
