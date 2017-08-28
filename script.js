@@ -2,15 +2,15 @@
 // @name        xkcd
 // @namespace   www.xkcd.com/
 // @include     /^https?:\/\/(www\.)?(explain)?xkcd\.com.*$/
-// @version     1.06
+// @version     1.07
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.10/chance.min.js
-// @updateURL   https://raw.githubusercontent.com/SkorohodAlex/easyxkcd/master/script.js
+// @updateURL   https://cdn.rawgit.com/SkorohodAlex/easyxkcd/08f76b29/script.js
 // ==/UserScript==
 var subscriptSet=0;
-var maxXKCD=1830;
+var maxXKCD=1885;
 
 function doc_keyUp(e) {
     if(e.ctrlKey) return;
@@ -38,11 +38,13 @@ function doc_keyUp(e) {
             }
             break;
         case "KeyG":
+            if(!$("ul.comicNav").length)
+                break;
             var name="a";
             var err=false;
             $.ajax ( {
                 type:       'GET',
-                url:        'https://xkcd.com',
+                url:        '/',
                 dataType:   'html',
                 crossDomain: true,
                 success:    function (apihtml) {
@@ -52,7 +54,7 @@ function doc_keyUp(e) {
                         if(name===null){
                             break;
                         }
-                        if(err) window.alert("Input must be a positive number lower than "+ parseInt(maxXKCD+1));
+                        if(err) window.alert("Input must be a positive number lower or equal than " + maxXKCD);
                         err=true;
                         name=prompt("Enter xkcd number","1786");
                     }
@@ -88,9 +90,11 @@ function doc_keyUp(e) {
             }
             break;
         case "KeyR":
+            if(!$("ul.comicNav").length)
+                break;
             $.ajax ( {
                 type:       'GET',
-                url:        'https://xkcd.com',
+                url:        '/',
                 dataType:   'html',
                 success:    function (apihtml) {
                     var resultObj = jQuery(apihtml).find('a[rel="prev"]')[0].href;
