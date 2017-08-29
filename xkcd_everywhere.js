@@ -21,8 +21,7 @@ function doc_keyUp(e) {
             method:       'GET',
             url:        'https://www.xkcd.com/',
             onload:    function (apihtml) {
-                var resultObj = new DOMParser().parseFromString(apihtml.responseText, "text/html");
-                resultObj = jQuery(resultObj).find('a[rel="prev"]')[0].href;
+                var resultObj = $(apihtml.responseText).find('a[rel="prev"]')[0].href;
                 maxXKCD = parseInt(resultObj.substring(resultObj.indexOf(".com/")+4).replace(/\//g,'')) + 1;
                 while(Math.floor(name)!=name || name<1 || name>maxXKCD){
                     if(name===null){
@@ -30,6 +29,7 @@ function doc_keyUp(e) {
                     }
                     if(err) window.alert("Input must be a positive number lower or equal than " + maxXKCD);
                     err=true;
+                    console.log(maxXKCD);
                     name=prompt("Enter xkcd number","1786");
                 }
                 if(name===null){
