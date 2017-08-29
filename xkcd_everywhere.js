@@ -11,7 +11,7 @@
 // @require     https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.10/chance.min.js
 // @resource    html https://www.xkcd.com/
 // @connect     www.xkcd.com
-// @updateURL   https://cdn.rawgit.com/cabo40/easyxkcd/0676a105/xkcd_everywhere.js
+// @updateURL   https://raw.githubusercontent.com/cabo40/easyxkcd/master/xkcd_everywhere.js
 // ==/UserScript==
 
 function doc_keyUp(e) {
