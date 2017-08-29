@@ -29,7 +29,6 @@ function doc_keyUp(e) {
                     }
                     if(err) window.alert("Input must be a positive number lower or equal than " + maxXKCD);
                     err=true;
-                    console.log(maxXKCD);
                     name=prompt("Enter xkcd number","1786");
                 }
                 if(name===null){
