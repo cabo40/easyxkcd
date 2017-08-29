@@ -6,6 +6,7 @@
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_xmlhttpRequest
+// @grant       GM_openInTab
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.10/chance.min.js
 // @resource    html https://www.xkcd.com/
@@ -34,7 +35,7 @@ function doc_keyUp(e) {
                 if(name===null){
                     abort();
                 }
-                window.location.href = "https://xkcd.com/"+Math.floor(name);
+                GM_openInTab("https://xkcd.com/"+Math.floor(name), '_blank');
             }
         } );
     }
