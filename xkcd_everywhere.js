@@ -2,7 +2,7 @@
 // @name        xkcd_everywhere
 // @namespace   www.xkcd.com
 // @match      *://*/*
-// @version     0.01
+// @version     0.02
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_xmlhttpRequest
