@@ -2,12 +2,12 @@
 // @name        xkcd
 // @namespace   www.xkcd.com/
 // @include     /^https?:\/\/(www\.)?(explain)?xkcd\.com.*$/
-// @version     1.07
+// @version     1.08
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.1.1.min.js
 // @require     https://rawgit.com/kswedberg/jquery-smooth-scroll/master/jquery.smooth-scroll.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.10/chance.min.js
-// @updateURL   https://cdn.rawgit.com/SkorohodAlex/easyxkcd/08f76b29/script.js
+// @updateURL   https://raw.githubusercontent.com/cabo40/easyxkcd/master/script.js
 // ==/UserScript==
 var subscriptSet=0;
 var maxXKCD=1885;
